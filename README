@@ -1,4 +1,4 @@
-CSE 127: Computer Security
+Stanford CS 155
 Project One
 
 
@@ -20,7 +20,7 @@ be built.
 Your exploits should assume that the compiled target programs are
 installed setuid-root in /tmp -- /tmp/target1, /tmp/target2, etc.
 
-Note that there are five targets that you are responsible for.
+Note that there are six targets that you are responsible for.
 
 To build the targets, change to the pp1/targets directory and type
 "make" on the command line; the Makefile will take care of building
@@ -56,8 +56,8 @@ You are to write exploits, one per target.  Each exploit, when run in
 the virtual machine with its target installed setuid-root in /tmp,
 should yield a root shell (/bin/sh).
 
-Your task is to attack the five targets named target1 through
-target5.  You are not responsible for target-ec unless you would like
+Your task is to attack the six targets named target1 through
+target6.  You are not responsible for target-ec unless you would like
 extra credit.
 
 ---==[ Hints ]==---
@@ -134,7 +134,7 @@ Your exploit programs should not take any command-line arguments.
 For part 1, sploit1 and sploit2 are due -- exploiting target1 and
 target2.  This is to encourage you to start early.
 
-For part 2, the remaining exploits -- numbers 3 through 5 -- are due.
+For part 2, the remaining exploits -- numbers 3 through 6 -- are due.
 
 For each part, you will need to submit the source code for your
 exploits, along with any files (Makefile, shellcode.h) necessary for
@@ -156,7 +156,7 @@ experiences or suggestions for improving the assignment.
 
 ---==[ Grading ]==---
 
-You will receive two points (out of 10) for each exploit that yields a
+You will receive two points (out of 12) for each exploit that yields a
 root shell in our testing.  There will not normally be partial
 credit.  We may also ask you to explain to us how and why each exploit
 works.  If you work with a partner, be sure that each of you

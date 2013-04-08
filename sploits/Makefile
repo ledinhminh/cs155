@@ -1,5 +1,5 @@
 # tools
-CC := gcc
+CC := gcc-4.3
 RM := rm -f
 
 # flags
@@ -8,7 +8,7 @@ LDFLAGS :=
 LDLIBS :=
 
 # sources
-sources := sploit1.c sploit2.c sploit3.c sploit4.c sploit5.c
+sources := sploit1.c sploit2.c sploit3.c sploit4.c sploit5.c sploit6.c sploit-ec.c
 targets := $(sources:.c=)
 
 # gmake magic

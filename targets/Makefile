@@ -1,5 +1,5 @@
 # tools
-CC := gcc
+CC := gcc-4.3
 RM := rm -f
 CP := cp
 
@@ -9,8 +9,8 @@ LDFLAGS :=
 LDLIBS :=
 
 # sources
-sources := target1.c target2.c target3.c target4.c target5.c tmalloc.c
-targets := target1 target2 target3 target4 target5
+sources := target1.c target2.c target3.c target4.c target5.c target6.c target-ec.c tmalloc.c
+targets := target1 target2 target3 target4 target5 target6 target-ec
 
 # gmake magic
 .PHONY: default all clean
@@ -21,14 +21,14 @@ all: $(targets)
 
 
 install: $(targets)
-	-$(RM) /tmp/target?
+	-$(RM) /tmp/target? /tmp/target-ec
 	$(CP) $(targets) /tmp
 
 
 setuid:
 ifeq ($(shell id -u),0)
-	chown root:root /tmp/target?
-	chmod 4755 /tmp/target?
+	chown root:root /tmp/target? /tmp/target-ec
+	chmod 4755 /tmp/target? /tmp/target-ec
 else
 	@echo "'make setuid' must be run as root -- use su or a root login!"
 endif
