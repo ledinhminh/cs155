@@ -2,8 +2,30 @@
 <html>
     <head>
         <meta charset='utf-8'>
+        <style type="text/css">
+            #zbframeReal{
+                width: 100%;
+                height: 500px;
+                overflow: hidden;
+                border:none; 
+                scrolling:no; 
+                frameborder:0;  
+                marginheight:0; 
+                marginwidth:0;
+            }
+        </style>
+        <script>
+            var hit=0;
+            function bye(){
+                if(hit==2){
+                    parent.location.replace("http://crypto.stanford.edu/cs155");
+                }
+                hit=hit+1;
+            }
+        </script>
     </head>
     <body> 
-        <iframe src="http://zoobar.stanford.edu/transferC.php"></iframe>
+        <iframe id="zbframeReal" name="zbframeReal" onload="bye()">
+        </iframe>
     </body>
 </html>
