@@ -34,7 +34,7 @@ Attack C - Clickjacking
 Attack D - Stored XSS
 ---------------------
 
-# Sanitize stored profile
+# Sanitize stored profile by striping all HTML tags
 
 + index.php: sanitize 'profile'
 
