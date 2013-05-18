@@ -48,6 +48,6 @@ Attack D - Stored XSS
 Attack E - attribute quotes
 ---------------------------
 
-# Use double quotes for all HTML attributes
+# Use double quotes for all HTML attributes that takes user input
 
 + index.php: added double quotes
