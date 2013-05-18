@@ -3,54 +3,62 @@
 
 // Return true on registration success, otherwise set $login_error
 function validate_registration(&$user) {
-  global $login_error;
-  $success = false;
-  $username = $_POST['login_username'];
-  $password = $_POST['login_password'];
-  if(!$username) 
-    $login_error = "You must supply a username to register.";
-  else if(!$password) 
-    $login_error = "You must supply a password to register.";
-  else if(!$user->_addRegistration($username, $password)) 
-    $login_error = "Registration failed.";
-  else $success = true;
-  return $success;
+    global $login_error;
+    $success = false;
+    $username = $_POST['login_username'];
+    $password = $_POST['login_password'];
+    if(!$username){ 
+        $login_error = "You must supply a username to register.";
+    } else if(!ctype_alnum($username)){
+        $login_error = "You must supply a username with only alphanumeric chars.";
+    } else if(!$password){
+        $login_error = "You must supply a password to register.";
+    } else if(!$user->_addRegistration($username, $password)) {
+        $login_error = "Registration failed.";
+    }else{ 
+        $success = true;
+    }
+    return $success;
 }
 
 // Return true on login success, otherwise set $login_error
 function validate_login(&$user) {
-  global $login_error;
-  $success = false;
-  $username = $_POST['login_username'];
-  $password = $_POST['login_password'];
-  if(!$username) 
-    $login_error = "You must supply a username to log in.";
-  else if(!$password) 
-    $login_error = "You must supply a password to log in.";
-  else if(!$user->_checkLogin($username, $password)) 
-    $login_error = "Invalid username or password.";
-  else $success = true;
-  return $success;
+    global $login_error;
+    $success = false;
+    $username = $_POST['login_username'];
+    $password = $_POST['login_password'];
+    if(!$username) {
+        $login_error = "You must supply a username to log in.";
+    } else if(!ctype_alnum($username)){
+        $login_error = "You must supply a username with only alphanumeric chars.";
+    } else if(!$password) {
+        $login_error = "You must supply a password to log in.";
+    } else if(!$user->_checkLogin($username, $password)) {
+        $login_error = "Invalid username or password.";
+    } else {
+        $success = true;
+    }
+    return $success;
 }
 
 // Return true if the user is valid, otherwise return false
 function validate_user(&$user)
 {
-  if (isset($_POST['submit_registration']) && 
-      validate_registration($user)) { 
-    return true;  // Successful registration
-  } else if(isset($_POST['submit_login']) && validate_login($user)) {
-    return true;  // Successful login
-  } else if($user->id > 0) {
-    return true;  // Already logged in
-  } else {
-    return false;  // Request credentials
-  } 
+    if (isset($_POST['submit_registration']) && 
+        validate_registration($user)) { 
+            return true;  // Successful registration
+        } else if(isset($_POST['submit_login']) && validate_login($user)) {
+            return true;  // Successful login
+        } else if($user->id > 0) {
+            return true;  // Already logged in
+        } else {
+            return false;  // Request credentials
+        } 
 }
 
 function display_login()
 {
-  nav_start_outer("Login");
+    nav_start_outer("Login");
 ?>
 <div id="login" class="centerpiece">
 <form name=loginform method=POST action="<?php echo $_SERVER['PHP_SELF']?>">
@@ -75,5 +83,5 @@ function display_login()
 </div>
 <script>document.loginform.login_username.focus();</script>
 <?php
-  nav_end_outer();
+    nav_end_outer();
 } ?>
