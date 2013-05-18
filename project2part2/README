@@ -1,0 +1,30 @@
+Attack A - XSS
+--------------
+# Only allow alphanumeric for username
+
++ index.php: added ctype_alnum checks
++ users.php: added ctype_alnum checks; added htmlspecialchar() for username
+
+Attack B - CSRF
+---------------
+
+
+Attack C - Clickjacking
+-----------------------
+# Better frame busting code
+
++ static/zoobar.css: set BODY to "display: none;"
++ include/buster.php: set "display: block;" when frame buster passes.
++ include/navigation.php: imports buster.php in every page.
+
+Attack D - Stored XSS
+---------------------
+
+
+
+Attack E - attribute quotes
+---------------------------
+
+# Use double quotes for all HTML attributes
+
++ index.php: added double quotes
