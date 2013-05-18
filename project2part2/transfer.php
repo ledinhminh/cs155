@@ -1,11 +1,18 @@
 <?php 
 require_once("includes/common.php"); 
+session_start();
+if(!isset($_SESSION['sid'])){
+    $_SESSION['sid']=uniqid(rand(), TRUE);
+}
 nav_start_outer("Transfer");
 nav_start_inner();
+$csrfToken=md5($_SESSION['sid']);
 if($_POST['submission']) {
-    $recipient = $_POST['recipient'];
+    $recipient = _sanitize($_POST['recipient']);
     if(!ctype_alnum($recipient)){
         $result = "Invalid recipient name.";
+    }else if($csrfToken != $_POST['token']){
+        $result = "Invalid submission token.";
     }else{
         $zoobars = (int) $_POST['zoobars'];
         $sql = "SELECT Zoobars FROM Person WHERE PersonID=$user->id";
@@ -32,8 +39,9 @@ if($_POST['submission']) {
 ?>
 <p> <b>Balance:</b> <span id="myZoobars"></span> zoobars </p>
 <form method=POST name=transferform action="<?php echo $_SERVER['PHP_SELF']?>">
-  <p>Send <input name=zoobars type=text value="<?php echo $_POST['zoobars']; ?>" size=5> zoobars</p>
-  <p>to <input name=recipient type=text value="<?php echo $_POST['recipient']; ?>"></p>
+  <p>Send <input name=zoobars type=text value="<?php echo _sanitize($_POST['zoobars']); ?>" size=5> zoobars</p>
+  <p>to <input name=recipient type=text value="<?php echo _sanitize($_POST['recipient']); ?>"></p>
+  <input name=token type=hidden value="<?php echo $csrfToken; ?>"></p>
 <input type=submit name=submission value="Send">
 </form>
 <span class=warning><?php echo $result; ?></span>

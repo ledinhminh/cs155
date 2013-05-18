@@ -15,7 +15,7 @@
 <div><a href="?action=logout"><?php 
   global $user;
   if($user->id) 
-    echo "Log out " . htmlspecialchars($user->username); 
+    echo "Log out " . _sanitize($user->username); 
 ?></a></div>
 </div>
 <?php

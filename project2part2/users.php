@@ -7,7 +7,7 @@ if($_GET['user'] && !ctype_alnum($_GET['user'])){
     echo '<p class="warning" id="baduser">Invalid username</p>';
     exit;
 }
-$safeUser = htmlspecialchars($_GET['user'], ENT_QUOTES, 'UTF-8');
+$safeUser = _sanitize($_GET['user']);
 ?>
 <form name="profileform" method="GET" action="<?php echo $_SERVER['PHP_SELF']?>">
     <nobr>User:
@@ -33,8 +33,8 @@ if ( $rs->next() ) { // Sanitize and display profile
         'onKeyUp|onLoad|onMouseDown|onMouseMove|onMouseOut|'.
         'onMouseOver|onMouseUp|onMove|onReset|onResize|'.
         'onSelect|onSubmit|onUnload';
-    $profile = preg_replace("/$disallowed/i", " ", $profile);
-    echo "<p id=profile>$profile</p></div>";
+    $taggedProfile = applyTags($profile);
+    echo "<p id=profile>$taggedProfile</p></div>";
     $zoobars = ($zoobars > 0) ? $zoobars : 0;
     echo "<span id='zoobars' class='$zoobars'/>";	
 ?>

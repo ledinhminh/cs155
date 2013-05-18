@@ -47,6 +47,7 @@ class User {
     if(isset($_COOKIE[$this->cookieName])) setcookie($this->cookieName);
     $this->id = 0;
     $this->username = null;
+    session_destory();
   }
 
   function _setCookie(&$values, $init) {

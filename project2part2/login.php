@@ -66,7 +66,7 @@ function display_login()
 <tr>
    <td>Username:</td>
     <td>
-        <input type=text name=login_username size=30 autocomplete=no value="<?php echo htmlspecialchars($_POST['login_username']); ?>">
+        <input type=text name=login_username size=30 autocomplete=no value="<?php echo _sanitize($_POST['login_username']); ?>">
     </td>
 </tr>
 <tr>
