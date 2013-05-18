@@ -8,6 +8,8 @@
 <TITLE><?php echo "$page_title - " ?>Zoobar Foundation
 </TITLE>
 </HEAD>
+<BODY>
+<? require_once("includes/buster.php"); ?>
 <div id="header">
 <div>Stanford CS155 Project 2</div>
 <div><a href="?action=logout"><?php 
